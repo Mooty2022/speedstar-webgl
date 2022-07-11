@@ -1,0 +1,1359 @@
+[
+    {
+        "stateMutability": "nonpayable",
+        "type": "constructor",
+        "inputs": [
+            {
+                "name": "_speed",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "type": "address",
+                "name": "_star"
+            },
+            {
+                "internalType": "address",
+                "type": "address",
+                "name": "_horse"
+            },
+            {
+                "type": "address",
+                "internalType": "address",
+                "name": "_facility"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "_speedPerBlock"
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "_startBlock"
+            }
+        ]
+    },
+    {
+        "name": "Claim",
+        "inputs": [
+            {
+                "name": "user",
+                "type": "address",
+                "indexed": true,
+                "internalType": "address"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "amount",
+                "indexed": false
+            }
+        ],
+        "type": "event",
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "inputs": [
+            {
+                "name": "user",
+                "internalType": "address",
+                "indexed": true,
+                "type": "address"
+            },
+            {
+                "name": "amount",
+                "type": "uint256",
+                "indexed": false,
+                "internalType": "uint256"
+            }
+        ],
+        "name": "ClaimNativeToken"
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "ClaimToken",
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "type": "address",
+                "name": "user"
+            },
+            {
+                "name": "token",
+                "indexed": false,
+                "internalType": "address",
+                "type": "address"
+            }
+        ]
+    },
+    {
+        "anonymous": false,
+        "name": "DepositFacility",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "user",
+                "indexed": true,
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256",
+                "indexed": false
+            },
+            {
+                "name": "popularity",
+                "type": "uint256",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "usedPlot",
+                "indexed": false
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "plotAvailable",
+                "type": "uint256"
+            }
+        ],
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "user",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "popularity"
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "indexed": false,
+                "name": "tokenId"
+            },
+            {
+                "indexed": false,
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "totalHorseStake"
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "maximumHorseStake"
+            }
+        ],
+        "name": "DepositHorse",
+        "type": "event",
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "user",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "stableId",
+                "type": "uint256",
+                "indexed": false
+            },
+            {
+                "indexed": false,
+                "type": "uint256",
+                "name": "popularity",
+                "internalType": "uint256"
+            },
+            {
+                "indexed": false,
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "tokenId"
+            },
+            {
+                "name": "totalHorseStake",
+                "indexed": false,
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "name": "maximumHorseStake",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "DepositHorseInStable"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "name": "user",
+                "indexed": true,
+                "type": "address",
+                "internalType": "address"
+            },
+            {
+                "name": "tokenId",
+                "type": "uint256",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "usedPlot"
+            },
+            {
+                "internalType": "uint256",
+                "name": "plotAvailable",
+                "indexed": false,
+                "type": "uint256"
+            }
+        ],
+        "type": "event",
+        "name": "DepositStable"
+    },
+    {
+        "name": "DepositStar",
+        "type": "event",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address",
+                "indexed": false
+            },
+            {
+                "name": "amount",
+                "internalType": "uint256",
+                "indexed": false,
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "indexed": false,
+                "name": "totalHorseStake"
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "name": "maximumHorseStake",
+                "internalType": "uint256"
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "OwnershipTransferred",
+        "inputs": [
+            {
+                "indexed": true,
+                "type": "address",
+                "internalType": "address",
+                "name": "previousOwner"
+            },
+            {
+                "name": "newOwner",
+                "indexed": true,
+                "type": "address",
+                "internalType": "address"
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "inputs": [
+            {
+                "name": "user",
+                "internalType": "address",
+                "indexed": false,
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "amount"
+            }
+        ],
+        "anonymous": false,
+        "name": "SetSpeedPerBlock"
+    },
+    {
+        "type": "event",
+        "name": "UpdateMultiplier",
+        "anonymous": false,
+        "inputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "multiplierNumber",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "inputs": [
+            {
+                "name": "user",
+                "internalType": "address",
+                "indexed": true,
+                "type": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "tokenId",
+                "indexed": false,
+                "internalType": "uint256"
+            },
+            {
+                "indexed": false,
+                "type": "uint256",
+                "name": "popularity",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "usedPlot"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "plotAvailable",
+                "indexed": false
+            }
+        ],
+        "type": "event",
+        "name": "WithdrawFacility",
+        "anonymous": false
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "indexed": true,
+                "name": "user",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "indexed": false,
+                "name": "tokenId"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "indexed": false,
+                "name": "popularity"
+            },
+            {
+                "internalType": "uint256",
+                "indexed": false,
+                "type": "uint256",
+                "name": "totalHorseStake"
+            },
+            {
+                "internalType": "uint256",
+                "indexed": false,
+                "type": "uint256",
+                "name": "maximumHorseStake"
+            }
+        ],
+        "name": "WithdrawHorse",
+        "type": "event",
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "WithdrawHorseInStable",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "user",
+                "indexed": true,
+                "type": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "stableId",
+                "indexed": false,
+                "internalType": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "indexed": false,
+                "name": "popularity",
+                "type": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "tokenId",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "totalHorseStake"
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "indexed": false,
+                "name": "maximumHorseStake"
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "name": "WithdrawStable",
+        "anonymous": false,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "user",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "internalType": "uint256",
+                "indexed": false,
+                "type": "uint256",
+                "name": "tokenId"
+            },
+            {
+                "internalType": "uint256",
+                "indexed": false,
+                "type": "uint256",
+                "name": "totalHorseStake"
+            },
+            {
+                "internalType": "uint256",
+                "indexed": false,
+                "name": "maximumHorseStake",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "indexed": false,
+                "name": "usedPlot"
+            },
+            {
+                "type": "uint256",
+                "name": "plotAvailable",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "name": "WithdrawStar",
+        "anonymous": false,
+        "inputs": [
+            {
+                "type": "address",
+                "indexed": false,
+                "internalType": "address",
+                "name": "user"
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "amount",
+                "indexed": false
+            },
+            {
+                "indexed": false,
+                "name": "totalHorseStake",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "maximumHorseStake",
+                "indexed": false
+            }
+        ],
+        "type": "event"
+    },
+    {
+        "name": "BONUS_MULTIPLIER",
+        "stateMutability": "view",
+        "inputs": [],
+        "type": "function",
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": ""
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "type": "function",
+        "stateMutability": "view",
+        "name": "bonusMultipliers"
+    },
+    {
+        "stateMutability": "view",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "bonusScoreLevel"
+    },
+    {
+        "name": "enableStake",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool",
+                "internalType": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "inputs": [],
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "bytes4",
+                "type": "bytes4"
+            }
+        ],
+        "type": "function",
+        "inputs": [
+            {
+                "type": "address",
+                "internalType": "address",
+                "name": ""
+            },
+            {
+                "type": "address",
+                "internalType": "address",
+                "name": ""
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            },
+            {
+                "type": "bytes",
+                "internalType": "bytes",
+                "name": ""
+            }
+        ],
+        "name": "onERC721Received",
+        "stateMutability": "nonpayable"
+    },
+    {
+        "name": "owner",
+        "type": "function",
+        "inputs": [],
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "internalType": "address",
+                "type": "address",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "inputs": [],
+        "name": "plot",
+        "outputs": [
+            {
+                "type": "address",
+                "internalType": "contract IPlot",
+                "name": ""
+            }
+        ],
+        "type": "function",
+        "stateMutability": "view"
+    },
+    {
+        "stateMutability": "view",
+        "name": "poolInfo",
+        "inputs": [],
+        "type": "function",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "totalStake",
+                "type": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "allocPoint",
+                "internalType": "uint256"
+            },
+            {
+                "name": "lastRewardBlock",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "accSpeedPerShare",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "inputs": [],
+        "outputs": [],
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "name": "renounceOwnership"
+    },
+    {
+        "type": "function",
+        "outputs": [
+            {
+                "internalType": "contract ISpeed",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "inputs": [],
+        "name": "speed",
+        "stateMutability": "view"
+    },
+    {
+        "name": "speedPerBlock",
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "type": "function",
+        "stateMutability": "view"
+    },
+    {
+        "stateMutability": "view",
+        "name": "starBalance",
+        "type": "function",
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            }
+        ],
+        "inputs": [
+            {
+                "internalType": "address",
+                "type": "address",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "type": "function",
+        "stateMutability": "view",
+        "name": "startBlock"
+    },
+    {
+        "stateMutability": "view",
+        "name": "totalAllocPoint",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": ""
+            }
+        ],
+        "inputs": [],
+        "type": "function"
+    },
+    {
+        "name": "transferOwnership",
+        "inputs": [
+            {
+                "type": "address",
+                "internalType": "address",
+                "name": "newOwner"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "outputs": []
+    },
+    {
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "totalHorse"
+            },
+            {
+                "name": "amount",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "rewardDebt",
+                "internalType": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "bonus"
+            }
+        ],
+        "type": "function",
+        "inputs": [
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "name": "userInfo"
+    },
+    {
+        "stateMutability": "view",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "userPlots",
+        "type": "function",
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "name": "setPlotAddress",
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "name": "_plot",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "type": "function",
+        "name": "getPlotAvailable",
+        "stateMutability": "nonpayable",
+        "outputs": [
+            {
+                "name": "available",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "_user",
+                "type": "address",
+                "internalType": "address"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "name": "_bonusMultipliers",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+            }
+        ],
+        "name": "setBonusMultipliers",
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "setScoreLevel",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "type": "uint256[]",
+                "internalType": "uint256[]",
+                "name": "_scoreLevel"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "_amount"
+            }
+        ],
+        "name": "setSpeedPerBlock",
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "outputs": [],
+        "type": "function",
+        "name": "depositStar"
+    },
+    {
+        "outputs": [],
+        "name": "withdrawStar",
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getUserDepositStable",
+        "stateMutability": "view",
+        "inputs": [
+            {
+                "internalType": "address",
+                "type": "address",
+                "name": "_address"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "tuple[]",
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "type": "uint256",
+                        "name": "tokenId"
+                    },
+                    {
+                        "components": [
+                            {
+                                "type": "uint256",
+                                "name": "tokenId",
+                                "internalType": "uint256"
+                            },
+                            {
+                                "name": "lastRewardBlock",
+                                "internalType": "uint256",
+                                "type": "uint256"
+                            },
+                            {
+                                "type": "uint256",
+                                "name": "remainBlock",
+                                "internalType": "uint256"
+                            },
+                            {
+                                "name": "popularity",
+                                "type": "uint256",
+                                "internalType": "uint256"
+                            }
+                        ],
+                        "name": "horses",
+                        "internalType": "struct StakingV4.Horse[]",
+                        "type": "tuple[]"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "type": "uint256",
+                        "name": "multiplier"
+                    },
+                    {
+                        "type": "uint256",
+                        "name": "popularity",
+                        "internalType": "uint256"
+                    }
+                ],
+                "name": "",
+                "internalType": "struct StakingV4.Stable[]"
+            }
+        ]
+    },
+    {
+        "stateMutability": "view",
+        "name": "getUserDepositHorse",
+        "outputs": [
+            {
+                "type": "tuple[]",
+                "name": "",
+                "components": [
+                    {
+                        "name": "tokenId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "type": "uint256",
+                        "name": "lastRewardBlock",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "type": "uint256",
+                        "internalType": "uint256",
+                        "name": "remainBlock"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "popularity",
+                        "type": "uint256"
+                    }
+                ],
+                "internalType": "struct StakingV4.Horse[]"
+            }
+        ],
+        "type": "function",
+        "inputs": [
+            {
+                "name": "_address",
+                "type": "address",
+                "internalType": "address"
+            }
+        ]
+    },
+    {
+        "stateMutability": "view",
+        "name": "getUserDepositHorseInStable",
+        "outputs": [
+            {
+                "name": "",
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "type": "uint256",
+                        "name": "tokenId"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "lastRewardBlock",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "remainBlock",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "type": "uint256",
+                        "name": "popularity"
+                    }
+                ],
+                "internalType": "struct StakingV4.Horse[]",
+                "type": "tuple[]"
+            }
+        ],
+        "type": "function",
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            },
+            {
+                "name": "_stableId",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ]
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_token",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "name": "claimToken",
+        "outputs": []
+    },
+    {
+        "outputs": [],
+        "type": "function",
+        "inputs": [],
+        "name": "claimNativeToken",
+        "stateMutability": "nonpayable"
+    },
+    {
+        "outputs": [],
+        "type": "function",
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "multiplierNumber"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "name": "updateMultiplier"
+    },
+    {
+        "stateMutability": "view",
+        "inputs": [
+            {
+                "name": "_from",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "type": "uint256",
+                "name": "_to"
+            }
+        ],
+        "name": "getMultiplier",
+        "type": "function",
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "name": "updatePool"
+    },
+    {
+        "name": "getPendingSpeed",
+        "inputs": [
+            {
+                "name": "_user",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "name": "getHorseInStable",
+        "type": "function",
+        "outputs": [
+            {
+                "type": "uint256[2][2]",
+                "internalType": "uint256[2][2]",
+                "name": "horses"
+            }
+        ],
+        "stateMutability": "view",
+        "inputs": [
+            {
+                "type": "address",
+                "internalType": "address",
+                "name": "_user"
+            },
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "_stableId"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "inputs": [
+            {
+                "name": "_stableId",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "type": "address",
+                "name": "_user",
+                "internalType": "address"
+            }
+        ],
+        "name": "getPopularityInStable",
+        "outputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": ""
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "depositFacility",
+        "outputs": [],
+        "inputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "_tokenId"
+            },
+            {
+                "type": "address",
+                "name": "_user",
+                "internalType": "address"
+            }
+        ],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "inputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "_tokenIds",
+                "type": "uint256[]"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "name": "withdrawFacility",
+        "outputs": []
+    },
+    {
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "name": "depositStable",
+        "inputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "_tokenId"
+            },
+            {
+                "internalType": "address",
+                "type": "address",
+                "name": "_user"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "inputs": [
+            {
+                "type": "uint256[]",
+                "name": "_tokenIds",
+                "internalType": "uint256[]"
+            },
+            {
+                "type": "address",
+                "name": "_user",
+                "internalType": "address"
+            }
+        ],
+        "outputs": [],
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "name": "withdrawStables"
+    },
+    {
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_stableTokenId",
+                "internalType": "uint256"
+            },
+            {
+                "type": "uint256",
+                "name": "_horseTokenId",
+                "internalType": "uint256"
+            },
+            {
+                "type": "address",
+                "internalType": "address",
+                "name": "_user"
+            }
+        ],
+        "type": "function",
+        "name": "depositHorseInStable"
+    },
+    {
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "_stableTokenId",
+                "internalType": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_horseTokenId",
+                "type": "uint256"
+            },
+            {
+                "name": "_user",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "name": "withdrawHorseInStable"
+    },
+    {
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "type": "uint256",
+                "internalType": "uint256",
+                "name": "_tokenId"
+            },
+            {
+                "internalType": "address",
+                "name": "_user",
+                "type": "address"
+            }
+        ],
+        "type": "function",
+        "name": "depositHorse"
+    },
+    {
+        "name": "emergencyWithdrawHorse",
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_tokenId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "inputs": [
+            {
+                "type": "uint256[]",
+                "name": "_tokenIds",
+                "internalType": "uint256[]"
+            },
+            {
+                "name": "_user",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "outputs": [],
+        "name": "withdrawHorse",
+        "type": "function",
+        "stateMutability": "nonpayable"
+    },
+    {
+        "inputs": [],
+        "name": "claim",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
