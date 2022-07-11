@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | SpeedStar</title>
+    <title>Unity WebGL Player | TestRealm</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,10 +20,9 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">SpeedStar</div>
+        <div id="unity-build-title">TestRealm</div>
       </div>
     </div>
-    <script src="web3/index.js"></script>
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -57,15 +56,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/speedstar-webgl.loader.js";
+      var loaderUrl = buildUrl + "/WebGL.loader.js";
       var config = {
-        dataUrl: buildUrl + "/speedstar-webgl.data",
-        frameworkUrl: buildUrl + "/speedstar-webgl.framework.js",
-        codeUrl: buildUrl + "/speedstar-webgl.wasm",
+        dataUrl: buildUrl + "/WebGL.data.gz",
+        frameworkUrl: buildUrl + "/WebGL.framework.js.gz",
+        codeUrl: buildUrl + "/WebGL.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "HellFactory",
-        productName: "SpeedStar",
-        productVersion: "0.1",
+        companyName: "DefaultCompany",
+        productName: "TestRealm",
+        productVersion: "0.0.8",
         showBanner: unityShowBanner,
       };
 
